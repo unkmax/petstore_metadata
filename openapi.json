@@ -16,6 +16,7 @@
           "product"
         ],
         "summary": "Get all product",
+        "operationId": "getAllProducts",
         "parameters": [],
         "responses": {
           "200": {
@@ -40,6 +41,7 @@
         "tags": [
           "product"
         ],
+        "operationId": "AddProduct",
         "summary": "Add a new product",
         "requestBody": {
           "content": {
@@ -69,6 +71,7 @@
         "tags": [
           "product"
         ],
+        "operationId": "GetProductById",
         "summary": "Get a product by ID",
         "parameters": [
           {
@@ -101,6 +104,7 @@
         "tags": [
           "product"
         ],
+        "operationId": "UpdateProductById",
         "summary": "Update new product",
         "parameters": [
           {
