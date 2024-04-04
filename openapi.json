@@ -12,6 +12,9 @@
   "paths": {
     "/products": {
       "post": {
+        "tags": [
+          "product"
+        ],
         "summary": "Add a new product",
         "requestBody": {
           "content": {
@@ -24,13 +27,23 @@
         },
         "responses": {
           "201": {
-            "description": "Product created"
+            "description": "Product created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              }
+            }
           }
         }
       }
     },
     "/products/{productId}": {
       "get": {
+        "tags": [
+          "product"
+        ],
         "summary": "Get a product by ID",
         "parameters": [
           {
@@ -56,6 +69,33 @@
           },
           "404": {
             "description": "Product not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Update new product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDto"
+                }
+              }
+            }
           }
         }
       }
