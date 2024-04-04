@@ -11,6 +11,31 @@
   ],
   "paths": {
     "/products": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Get all product",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      },
       "post": {
         "tags": [
           "product"
@@ -77,6 +102,17 @@
           "product"
         ],
         "summary": "Update new product",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the product to update"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -106,6 +142,55 @@
       "ProductDto": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "version": {
+            "type": "integer"
+          },
+          "objectAvailable": {
+            "type": "boolean"
+          },
+          "systemRecordFlag": {
+            "type": "boolean"
+          },
+          "entityDefinitionType": {
+            "type": "integer"
+          },
+          "cacheable": {
+            "type": "boolean"
+          },
+          "dataLocale": {
+            "type": "string"
+          },
+          "shortCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "modifyId": {
+            "type": "string"
+          },
+          "modifyDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "discontinued": {
+            "type": "boolean"
+          },
+          "imageId": {
+            "type": "integer"
+          },
+          "csgId": {
+            "type": "integer"
+          },
+          "csgEnabled": {
+            "type": "boolean"
+          },
+          "csgActive": {
+            "type": "boolean"
+          },
           "defaultSlaId": {
             "type": "integer"
           },
