@@ -139,6 +139,104 @@
           }
         }
       }
+    },
+    "images": {
+      "get": {
+        "tags": [
+          "image"
+        ],
+        "summary": "Get all images",
+        "operationId": "getAllImages",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Images not found"
+          }
+        }
+      }
+    },
+    "images/{imageId}": {
+      "get": {
+        "tags": [
+          "image"
+        ],
+        "summary": "Get image by ID",
+        "operationId": "getImageById",
+        "parameters": [
+          {
+            "name": "imageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID of the image to get"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "fields of the image to needs"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "404": {
+            "description": "Images not found"
+          }
+        }
+      }
+    },
+    "images/ImageDownload": {
+      "get": {
+        "tags": [
+          "image"
+        ],
+        "summary": "ImageDownload",
+        "operationId": "imageDownload",
+        "parameters": [
+          {
+            "name": "imageUrl",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "url of the image"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "404": {
+            "description": "Images not found"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -288,6 +386,30 @@
           "width",
           "yearsToDepriciate"
         ]
+      },
+      "ImageDto": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "imageId": {
+            "type": "integer"
+          },
+          "urlString": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Image"
+        }
       }
     }
   }
