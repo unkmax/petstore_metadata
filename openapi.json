@@ -408,6 +408,9 @@
           },
           "mimeType": {
             "type": "string"
+          },
+          "imgBlob": {
+            "type": "string"
           }
         },
         "xml": {
